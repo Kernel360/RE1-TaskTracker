@@ -1,1 +1,16 @@
+server.port: 8888
+logging.config: classpath:logback-local.xml
 
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  jpa:
+    show-sql: true
+    properties.hibernate.default_fetch_size: 100
+    hibernate.ddl-auto: update
+    open-in-view: false
+  datasource:
+    url: ${LOCAL_DB_NAME}
+    username: ${LOCAL_DB_USER_NAME}
+    password: ${LOCAL_DB_USER_PASSWORD}
+  devtools.livereload.enabled: true
