@@ -22,15 +22,41 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//lombok
 	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	//actuator
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	//jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	//validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	//web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//devtools
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	//h2, mysql
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
+
+	//map struct -> builder pattern에서 희망을 보다
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+	annotationProcessor(
+			'org.projectlombok:lombok',
+			'org.projectlombok:lombok-mapstruct-binding:0.1.0'
+	)
+
+	//guava, lang3 -> 예외처리 조건지정할 때 일반식을 메서드로 제공
+	implementation 'com.google.guava:guava:28.2-jre'
+	implementation 'org.apache.commons:commons-lang3:3.9'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
